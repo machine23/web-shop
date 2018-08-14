@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interior</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        
+        
+        <div class="top-block">
+            <div class="header site-padding">
+                <a href="#" class="logo">
+                    <img src="{% static 'img/logo.svg' %}" alt="logo">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li>
+                            <a href="{% url 'shop:index' %}" class="menu__link menu__link_active">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:products' %}" class="menu__link">Products</a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu__link">History</a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu__link">Showroom</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:contacts' %}" class="menu__link">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu__link">
+                                <img src="{% static 'img/search.svg' %}" alt="search" title="Search">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <section class="slider ">
+                <div class="slider__item card">
+                    <img class="card__img" src="{% static 'img/slider-img.jpg' %}" alt="slide 1">
+                    <div class="card__content card__content_wide slider__content_top-offset">
+                        <h3 class="tag tag-green">TRENDING</h3>
+                        <h2 class="title big-title">FISHNET CHAIR</h2>
+                        <p class="details">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black</p>
+                        <a href="{% url 'shop:details' %}"class="btn">Order us</a>
+                    </div>
+                </div>
+                <div class="slider__navigation">
+                    <a href="#" class="slider__circle"></a>
+                    <a href="#" class="slider__circle slider__circle_active"></a>
+                    <a href="#" class="slider__circle"></a>
+                </div>
+            </section> <!-- slider -->
+            
+        </div> <!-- Top Block -->
+            
+        <section class="featured">
+            <div class="featured__top site-padding">
+                <ul class="tab-controll">
+                    <li><a href="#" class="tab-controll__link tab-controll__link_active">Featured</a></li>
+                    <li><a href="#" class="tab-controll__link">New</a></li>
+                </ul>
+                <a href="{% url 'shop:products' %}" class="btn btn-ghost">Explore all</a>
+                
+            </div>
+            <div class="featured__content">
+                <div class="featured-card">
+                    <img src="{% static 'img/product-1.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="{% static 'img/product-2.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="{% static 'img/product-3.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="{% static 'img/product-4.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- featured -->
+        
+        <section class="promo">
+            <div class="promo__item card">
+                <img src="{% static 'img/promo-img1.jpg' %}" alt="promo product 1" class="card__img">
+                <div class="card__content">
+                    <h3 class="tag tag-blue">Exclusive</h3>
+                    <h2 class="title mid-title">Fishnet chair</h2>
+                    <p class="details">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                    <a href="{% url 'shop:details' %}"class="btn">order us</a>
+                </div>
+            </div>
+            <div class="promo__item card">
+                <img src="{% static 'img/promo-img.jpg' %}" alt="promo product 2" class="card__img">
+                <div class="card__content">
+                    <h3 class="tag tag-blue">Exclusive</h3>
+                    <h2 class="title mid-title">Fishnet chair</h2>
+                    <p class="details">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                    <a href="{% url 'shop:details' %}"class="btn">order us</a>
+                </div>
+            </div>
+        </section> <!-- promo-product -->
+        
+        <section class="trending">
+            <div class="trending__title-row  site-padding">
+                <div class="title mid-title">Trending products</div>
+                <a href="{% url 'shop:products' %}"class="btn btn-ghost">explore all</a>
+            </div>
+            <div class="trending__products">
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-11.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-21.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-31.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-41.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-51.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-61.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- trending-product -->
+        
+        <section class="hot-deals slider">
+            <div class="slider__item card">
+                <img class="card__img" src="{% static 'img/table.jpg' %}" alt="slide 1">
+                <div class="card__content card__content_wide">
+                    <h3 class="tag tag-red">TRENDING</h3>
+                    <h2 class="title big-title">FISHNET CHAIR</h2>
+                    <p class="details">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black</p>
+                    <a href="{% url 'shop:details' %}"class="btn">Order us</a>
+                </div>
+            </div>
+            <div class="slider__navigation">
+                <a href="#" class="slider__circle"></a>
+                <a href="#" class="slider__circle slider__circle_active"></a>
+                <a href="#" class="slider__circle"></a>
+            </div>
+        </section> <!-- hot-deals -->
+        
+        <section class="exclusive">
+            <div class="exclusive__left">
+                <div class="card">
+                    <img src="{% static 'img/product-1-lg.jpg' %}" alt="" class="card__img">
+                    <div class="card__content">
+                        <h3 class="tag tag-blue">TRENDING</h3>
+                        <h2 class="title mid-title">FISHNET CHAIR</h2>
+                        <p class="details">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                        <a href="{% url 'shop:details' %}"class="btn">Order us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="exclusive__right">
+                <div class="featured-card">
+                    <img src="{% static 'img/product-2-sm.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="{% static 'img/product-3-sm.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="{% static 'img/product-4-sm.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="{% static 'img/product-5-sm.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- exclusive-product -->
+        
+        <section class="mobile-app">
+            <div class="card">
+                <img src="{% static 'img/back-img.jpg' %}" alt="" class="card__img">
+                <div class="card__content card__content_wide">
+                    <h3 class="tag">mobile app</h3>
+                    <h2 class="title big-title">FIND. FOLLOW. FAVORITE.</h2>
+                    <p class="details details_bigger">Save your favorites and share your style.</p>
+                    <p class="details">
+                        <a href="#" class="app-link"><img class="app-link__img" src="{% static 'img/app-store.png' %}" alt="App Store"></a>
+                        <a href="#" class="app-link"><img class="app-link__img" src="{% static 'img/google-play.png' %}" alt="Google Play"></a>
+                    </p>
+                </div>
+            </div>
+        </section> <!-- mobile-app -->
+        
+        <footer class="footer site-padding">
+            <div class="footer__row">
+                <div class="footer__contact">
+                    <h3 class="footer__header">Contact Us</h3>
+                    <p class="footer__text">
+                        132A Bridge Road Richmond VIC<br>
+                        Australia.<br>
+                    </p>
+                    <p class="footer__text">
+                        Talk to us on 1300 132<br>
+                        info@interior.com
+                    </p>
+                </div>
+                <div class="footer__info">
+                    <h3 class="footer__header">Useful Information</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">Sales terms</a></li>
+                        <li><a href="#" class="footer__link">Customer care</a></li>
+                        <li><a href="#" class="footer__link">Delivery</a></li>
+                        <li><a href="#" class="footer__link">Architect accounts</a></li>
+                        <li><a href="#" class="footer__link">Careers</a></li>
+                        <li><a href="#" class="footer__link">Exchanges & returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer__subscribe">
+                    <h3 class="footer__header">Let's stay in touch!</h3>
+                    <p class="footer__text">
+                        Suscribe to know about our latest news, products and special offers just for suscribers.
+                    </p>
+                    <form class="footer__form">
+                        <input type="text" class="footer__email-input" placeholder="your email address">
+                        <button type="submit" class="footer__submit">&#xe800;</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__row">
+                <div class="footer__col">© Copyright - INTERIOR 2016. All Rights Reserved.</div>
+                <div class="footer__col footer__social">
+                    <!-- <a href="#"><img src="{% static 'img/social-links.png' %}" alt="social links"></a> -->
+                    <a href="#" class="social-link">&#xf30d;</a>
+                    <a href="#" class="social-link">&#xf30a;</a>
+                    <a href="#" class="social-link">&#xf310;</a>
+                    <a href="#" class="social-link">&#xf313;</a>
+                </div>
+                <div class="footer__col">
+                    <a href="#" class="footer__link footer__link_sm">Terms & Conditions</a> /
+                    <a href="#" class="footer__link footer__link_sm">Privacy policy & Cookies</a>
+                </div>
+            </div>
+        </footer>
+    </div> <!-- container -->
+</body>
+
+</html>

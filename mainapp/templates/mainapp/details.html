@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interior</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        
+        
+        <section class="top-block">
+            <div class="header site-padding">
+                <a href="index" class="logo">
+                    <img src="{% static 'img/logo.svg' %}" alt="logo">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li>
+                            <a href="{% url 'shop:index' %}" class="menu__link">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:products' %}" class="menu__link">Products</a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu__link">History</a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu__link">Showroom</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:contacts' %}" class="menu__link">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu__link">
+                                <img src="{% static 'img/search.svg' %}" alt="search" title="Search">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+        </section> <!-- Top Block -->
+        
+        <section class="product-details">
+            <div class="product-details__row">
+                <ul class="links">
+                    <li><a href="#" class="links__item links__item_active">all</a></li>
+                    <li><a href="#" class="links__item">Home</a></li>
+                    <li><a href="#" class="links__item">office</a></li>
+                    <li><a href="#" class="links__item">furniture</a></li>
+                    <li><a href="#" class="links__item">modern</a></li>
+                    <li><a href="#" class="links__item">classic</a></li>
+                </ul> <!-- hero -->
+            </div>
+            <div class="product-details__row site-padding">
+                <div class="product-slider">
+                    <a href="#" class="product-slider__link">
+                        <img src="{% static 'img/slider1.jpg' %}" alt="product photo" class="product-slider__img">
+                    </a>
+                    <div class="product-slider__controll">
+                        <a href="#" class="product-slider__link"><img src="{% static 'img/controll1.jpg' %}" alt="product photo" class="product-slider__sm-img"></a>
+                        <a href="#" class="product-slider__link"><img src="{% static 'img/controll2.jpg' %}" alt="product photo" class="product-slider__sm-img"></a>
+                        <a href="#" class="product-slider__link"><img src="{% static 'img/controll3.jpg' %}" alt="product photo" class="product-slider__sm-img"></a>
+                    </div>
+                </div>
+                <div class="product-details__details">
+                    <h2 class="title mid-title">Fishnet Chair</h2>
+                    <h3 class="tag tag-red">Hot Deal</h3>
+                    <p class="price">$ <span class="price__val">36.7</span>/sq</p>
+                    <a href="#" class="btn btn-buy">Order us</a>
+                    <p class="details">The majesty of Mountains - Ugmonk style.</p>
+                    <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+                    <p class="details">et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="details">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="trending">
+            <div class="trending__title-row  site-padding">
+                <div class="title mid-title">Related products</div>
+                <a href="{% url 'shop:products' %}" class="btn btn-ghost">explore all</a>
+            </div>
+            <div class="trending__products">
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-11.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}" class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-21.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}" class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="featured-card featured-card_big">
+                    <img src="{% static 'img/product-31.jpg' %}" alt="" class="featured-card__bkg">
+                    <div class="featured-card__cover">
+                        <a href="{% url 'shop:details' %}" class="btn btn-round">></a>
+                        <h3 class="title small-title">Fishnet Chair</h3>
+                        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- trending-product -->
+        
+        <footer class="footer site-padding">
+            <div class="footer__row">
+                <div class="footer__contact">
+                    <h3 class="footer__header">Contact Us</h3>
+                    <p class="footer__text">
+                        132A Bridge Road Richmond VIC<br>
+                        Australia.<br>
+                    </p>
+                    <p class="footer__text">
+                        Talk to us on 1300 132<br>
+                        info@interior.com
+                    </p>
+                </div>
+                <div class="footer__info">
+                    <h3 class="footer__header">Useful Information</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">Sales terms</a></li>
+                        <li><a href="#" class="footer__link">Customer care</a></li>
+                        <li><a href="#" class="footer__link">Delivery</a></li>
+                        <li><a href="#" class="footer__link">Architect accounts</a></li>
+                        <li><a href="#" class="footer__link">Careers</a></li>
+                        <li><a href="#" class="footer__link">Exchanges & returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer__subscribe">
+                    <h3 class="footer__header">Let's stay in touch!</h3>
+                    <p class="footer__text">
+                        Suscribe to know about our latest news, products and special offers just for suscribers.
+                    </p>
+                    <form class="footer__form">
+                        <input type="text" class="footer__email-input" placeholder="your email address">
+                        <button type="submit" class="footer__submit">&#xe800;</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__row">
+                <div class="footer__col">© Copyright - INTERIOR 2016. All Rights Reserved.</div>
+                <div class="footer__col footer__social">
+                    <!-- <a href="#"><img src="{% static 'img/social-links.png" alt="social links"></a> -->
+                    <a href="#" class="social-link">&#xf30d;</a>
+                    <a href="#" class="social-link">&#xf30a;</a>
+                    <a href="#" class="social-link">&#xf310;</a>
+                    <a href="#" class="social-link">&#xf313;</a>
+                </div>
+                <div class="footer__col">
+                    <a href="#" class="footer__link footer__link_sm">Terms & Conditions</a> /
+                    <a href="#" class="footer__link footer__link_sm">Privacy policy & Cookies</a>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
+</body>
+</html>
