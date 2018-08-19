@@ -1,0 +1,31 @@
+{% load static %}
+<a href="{% url 'shop:index' %}" class="logo">
+    <img src="{% static 'img/logo.svg' %}" alt="logo">
+</a>
+<nav class="menu">
+    <ul class="menu__list">
+        <li>
+            <a href="{% url 'shop:index' %}" class="menu__link
+            {% if request.resolver_match.view_name == 'shop:index' %}menu__link_active{% endif %}">
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'shop:products' %}" class="menu__link
+        {% if request.resolver_match.view_name == 'shop:products' %}menu__link_active{% endif %}">
+                Products
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'shop:contacts' %}" class="menu__link
+    {% if request.resolver_match.view_name == 'shop:contacts' %}menu__link_active{% endif %}">
+                Contact
+            </a>
+        </li>
+        <li>
+            <a href="#" class="menu__link">
+                <img src="{% static 'img/search.svg' %}" alt="search" title="Search">
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,9 @@
+{% load static %}
+<div class="featured-card {{ card_class }}">
+    <img src="{% static prod.image %}" alt="" class="featured-card__bkg">
+    <div class="featured-card__cover">
+        <a href="{% url 'shop:details' %}"class="btn btn-round">></a>
+        <h3 class="title small-title">{{ prod.title }}</h3>
+        <p class="details">Seat and back with&nbsp;upholstery made of cold cure foam</p>
+    </div>
+</div>

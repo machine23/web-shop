@@ -12,9 +12,11 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family: "Montserrat", sans-serif;
   position: relative;
+  height: 100%;
 }
 
 .container {
@@ -22,6 +24,13 @@ body {
   margin: 0 auto;
   /* border: 1px solid red; */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 .site-padding {
@@ -597,6 +606,7 @@ body {
 .footer {
   background-color: #f7f7f7;
   padding-top: 120px;
+  flex: 0 0 auto;
 }
 
 .footer__row {

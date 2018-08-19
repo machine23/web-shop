@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet"> {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>
+        {% block title %} Interior {% endblock %}
+    </title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header site-padding">
+            {% include 'main_menu.html' %}
+        </div>
+
+        <div class="content">
+            {% block content %} {% endblock content %}
+        </div>
+
+        <footer class="footer site-padding">
+            {% block footer %}
+            {% include 'footer.html' %}
+            {% endblock footer %}
+        </footer>
+    </div>
+    <!-- container -->
+</body>
+
+</html>
