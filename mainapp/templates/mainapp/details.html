@@ -11,23 +11,16 @@ Interion Shop
             <div class="product-details__row site-padding">
                 <div class="product-slider">
                     <a href="#" class="product-slider__link">
-                        <img src="{% static 'img/slider1.jpg' %}" alt="product photo" class="product-slider__img">
+                        <img src="{{ product.image.url }}" alt="product photo" class="product-slider__img">
                     </a>
-                    <div class="product-slider__controll">
-                        <a href="#" class="product-slider__link"><img src="{% static 'img/controll1.jpg' %}" alt="product photo" class="product-slider__sm-img"></a>
-                        <a href="#" class="product-slider__link"><img src="{% static 'img/controll2.jpg' %}" alt="product photo" class="product-slider__sm-img"></a>
-                        <a href="#" class="product-slider__link"><img src="{% static 'img/controll3.jpg' %}" alt="product photo" class="product-slider__sm-img"></a>
-                    </div>
+                    
                 </div>
                 <div class="product-details__details">
-                    <h2 class="title mid-title">Fishnet Chair</h2>
+                    <h2 class="title mid-title">{{ product.name }}</h2>
                     <h3 class="tag tag-red">Hot Deal</h3>
-                    <p class="price">$ <span class="price__val">36.7</span>/sq</p>
+                    <p class="price">$ <span class="price__val">{{ product.price }}</span></p>
                     <a href="#" class="btn btn-buy">Order us</a>
-                    <p class="details">The majesty of Mountains - Ugmonk style.</p>
-                    <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
-                    <p class="details">et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p class="details">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                    <p class="details">{{ product.description|linebreaksbr }}</p>
                 </div>
             </div>
         </section>
@@ -38,7 +31,7 @@ Interion Shop
                 <a href="{% url 'shop:products' %}" class="btn btn-ghost">explore all</a>
             </div>
             <div class="trending__products">
-                {% for prod in products %}
+                {% for prod in related %}
                 {% include 'mainapp/components/card.html' with prod=prod card_class='featured-card_big' %}
                 {% endfor %}
             </div>

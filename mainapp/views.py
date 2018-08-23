@@ -1,22 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Category, Product
 
 
 def index(request):
-    featured = []
-    trending = []
-    for i in range(1, 5):
-        product = {
-            'image': 'img/product-{}.jpg'.format(i),
-            'title': 'Product {}'.format(i),
-        }
-        featured.append(product)
-
-    for i in range(1, 7):
-        product = {
-            'image': 'img/product-{}1.jpg'.format(i),
-            'title': 'Product {}'.format(i),
-        }
-        trending.append(product)
+    featured = Product.objects.all()[:4]
+    trending = Product.objects.all()[:3]
+    
 
     context = {
         'featured': featured,
@@ -25,31 +14,30 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def details(request):
-    products = []
-    for i in range(1, 4):
-        product = {
-            'image': 'img/product-{}1.jpg'.format(i),
-            'title': 'Product {}'.format(i),
-        }
-        products.append(product)
-
+def details(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    # category = 
+    related = product.category.products.exclude(pk=pk)
+    
     context = {
-        'products': products,
+        'product': product,
+        'related': related,
     }
     return render(request, 'mainapp/details.html', context)
     
     
-def products(request):
-    products = []
-    for i in range(1, 7):
-        product = {
-            'image': 'img/product-{}1.jpg'.format(i),
-            'title': 'Product {}'.format(i),
-        }
-        products.append(product)
+def products(request, category_pk=None):
+    categories = Category.objects.all()
+    products = Product.objects.all()
 
+    category = None
+    if category_pk:
+        category = get_object_or_404(Category, pk=category_pk)
+        products = products.filter(category=category)
+    
     context = {
+        'category': category,
+        'categories': categories,
         'products': products,
     }
     return render(request, 'mainapp/products.html', context)
