@@ -132,6 +132,7 @@ body {
 /* Button **************************************************/
 
 .btn {
+  font-family: "Montserrat", sans-serif;
   display: inline-block;
   min-width: 45px;
   height: 45px;
@@ -147,6 +148,9 @@ body {
   letter-spacing: 3px;
   transition: color 0.2s;
   background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
   border-radius: 22.5px;
   box-shadow: 0px 2px 4.85px 0.15px rgba(33, 33, 33, 0.35);
 }
@@ -258,6 +262,28 @@ body {
   text-transform: uppercase;
   letter-spacing: 4.4px;
   margin-bottom: 42px;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  height: 71px;
+  box-shadow: 0 2px 5px 1px rgba(33, 33, 33, 0.35);
+  border-radius: 35px;
+  background-color: rgb(65, 167, 6);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 71px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4.4px;
+  margin-bottom: 42px;
+}
+
+.btn-submit:hover {
+  color: #fff;
+  background-color: rgb(69, 175, 8);
 }
 
 /* Card ********************************************/
@@ -850,7 +876,6 @@ body {
   border-color: #9c9c9c;
   border-style: solid;
   background-color: #ffffff;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -867,4 +892,48 @@ body {
   text-decoration: none;
   font-size: 48px;
   margin-bottom: 20px;
+}
+
+/* login-form *****************************************/
+.form-card {
+  margin: 60px 0;
+  /* height: 580px; */
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+}
+
+.form-card__content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.form-card p {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.form-card input {
+  display: block;
+  width: 100%;
+  padding: 19px;
+  font-size: 24px;
+  border: 1px solid #d9dee1;
+  background-color: #ffffff;
+}
+
+.form-card label {
+  font-size: 24px;
+}
+
+.avatar {
+  display: block;
+  width: 370px;
+  height: 370px;
+  border-radius: 50%;
 }

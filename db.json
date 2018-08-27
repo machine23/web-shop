@@ -1,0 +1,78 @@
+[{
+    "model": "mainapp.category",
+    "pk": 1,
+    "fields": {
+        "name": "furniture"
+    }
+}, {
+    "model": "mainapp.category",
+    "pk": 2,
+    "fields": {
+        "name": "lights"
+    }
+}, {
+    "model": "mainapp.product",
+    "pk": 1,
+    "fields": {
+        "category": 1,
+        "name": "armchair",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, ratione optio eligendi nisi totam fugiat quam rerum placeat expedita doloremque velit distinctio? Laudantium commodi totam velit quae minus! Nihil, obcaecati!",
+        "price": "80.00",
+        "stock": 5,
+        "image": "products/2018/08/23/product-21.jpg",
+        "added": "2018-08-23T09:01:34.462Z",
+        "updated": "2018-08-23T09:01:54.517Z"
+    }
+}, {
+    "model": "mainapp.product",
+    "pk": 2,
+    "fields": {
+        "category": 2,
+        "name": "lamp 1",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, ratione optio eligendi nisi totam fugiat quam rerum placeat expedita doloremque velit distinctio? Laudantium commodi totam velit quae minus! Nihil, obcaecati!",
+        "price": "30.00",
+        "stock": 3,
+        "image": "products/2018/08/23/product-11.jpg",
+        "added": "2018-08-23T09:02:24.004Z",
+        "updated": "2018-08-23T09:02:24.004Z"
+    }
+}, {
+    "model": "mainapp.product",
+    "pk": 3,
+    "fields": {
+        "category": 2,
+        "name": "lamp 2",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, ratione optio eligendi nisi totam fugiat quam rerum placeat expedita doloremque velit distinctio? Laudantium commodi totam velit quae minus! Nihil, obcaecati!",
+        "price": "15.00",
+        "stock": 8,
+        "image": "products/2018/08/23/product-31.jpg",
+        "added": "2018-08-23T09:02:51.136Z",
+        "updated": "2018-08-23T09:02:51.136Z"
+    }
+}, {
+    "model": "mainapp.product",
+    "pk": 4,
+    "fields": {
+        "category": 2,
+        "name": "lamp 3",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, ratione optio eligendi nisi totam fugiat quam rerum placeat expedita doloremque velit distinctio? Laudantium commodi totam velit quae minus! Nihil, obcaecati!",
+        "price": "12.00",
+        "stock": 1,
+        "image": "products/2018/08/23/product-41.jpg",
+        "added": "2018-08-23T09:03:18.466Z",
+        "updated": "2018-08-23T09:03:18.467Z"
+    }
+}, {
+    "model": "mainapp.product",
+    "pk": 5,
+    "fields": {
+        "category": 1,
+        "name": "red armchair",
+        "description": "Even the armchair made a statement of authority, ostentatious in its detailing. The gold was brilliant and the reds as deep as any poppy. The wood had been polished to a high shine and the floor beneath lacked the usual thin layer of dust these large homes often had.",
+        "price": "57.00",
+        "stock": 8,
+        "image": "products/2018/08/23/slider1.jpg",
+        "added": "2018-08-23T13:44:22.486Z",
+        "updated": "2018-08-23T13:44:22.486Z"
+    }
+}]

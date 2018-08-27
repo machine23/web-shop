@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero__content site-padding">
+        <h2 class="title big-title">Log-in</h2>
+    </div>
+</div>
+<div class="form-card site-padding">
+    <div class="form-card__content">
+        <form action="{% url 'account:login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}">
+            <button type="submit" class="btn btn-submit">Log-in</button>
+            <p class="details details_bigger details_centered">If you don't have an account <a href="{% url 'account:register' %}" class="btn btn-ghost">register here</a></p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
