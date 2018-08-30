@@ -39,5 +39,8 @@
                 <img src="{% static 'img/search.svg' %}" alt="search" title="Search">
             </a>
         </li>
+        <li>
+            Cart: {{ cart.0.get_total_quantity|default:0 }}
+        </li>
     </ul>
 </nav>

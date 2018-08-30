@@ -19,7 +19,7 @@ Interion Shop
                     <h2 class="title mid-title">{{ product.name }}</h2>
                     <h3 class="tag tag-red">Hot Deal</h3>
                     <p class="price">$ <span class="price__val">{{ product.price }}</span></p>
-                    <a href="#" class="btn btn-buy">Order us</a>
+                    <a href="{% url 'cart:cart_add' product.pk %}" class="btn btn-buy">Add to cart</a>
                     <p class="details">{{ product.description|linebreaksbr }}</p>
                 </div>
             </div>
