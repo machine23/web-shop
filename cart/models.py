@@ -14,6 +14,5 @@ class Cart(models.Model):
         return 'Cart {} : {} ({})'.format(self.user.username, self.product, self.quantity)
 
     def get_total_quantity(self):
-        print('***********')
         items = Cart.objects.filter(user=self.user)
         return sum(i.quantity for i in items) or 0
