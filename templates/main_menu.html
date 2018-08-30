@@ -22,6 +22,18 @@
                 Contact
             </a>
         </li>
+        {% if user.is_authenticated %}
+        <li>
+            <a href="{% url 'account:update_profile' %}" class="menu__link">{{ user }}</a>
+        </li>
+        <li>
+            <a href="{% url 'account:logout' %}" class="menu__link">Logout</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url 'account:login' %}" class="menu__link">Login</a>
+        </li>
+        {% endif %}
         <li>
             <a href="#" class="menu__link">
                 <img src="{% static 'img/search.svg' %}" alt="search" title="Search">

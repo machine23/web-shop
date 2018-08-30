@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero__content site-padding">
+        <h2 class="title big-title">Edit your account</h2>
+    </div>
+</div>
+<div class="form-card site-padding">
+    <div class="form-card__content">
+        <div>
+            {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="" class="avatar">
+            {% endif %}
+            <h3 class="title mid-title">Hello, {{ user }}</h3>
+            <p class="details details_bigger">Here you can edit your account.</p>
+        </div>
+        <form action="{% url 'account:update_profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            
+            <button type="submit" class="btn btn-submit">Save changes</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
