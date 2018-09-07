@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart_filters %}
+
+{% block title %}
+Your Shoping Cart
+{% endblock %}
+
+{% block content %}
+<section class="cart-details site-padding">
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax"></th>
+            <th class="tg-0lax">Product</th>
+            <th class="tg-0lax">Quantity</th>
+            <th class="tg-0lax">Unit Price</th>
+            <th class="tg-0lax"></th>
+            <th class="tg-0lax">Price</th>
+        </tr>
+        {% for item in cart %}
+        <tr key="{{ item.product.id }}">
+            <td class="tg-0lax">{% if item.product.image %}<img src="{{ item.product.image.url }}" class="cart-img">{% endif %}</td>
+            <td class="tg-0lax"><a href="{{ item.product.get_absolute_url }}">{{ item.product.name }}</a></td>
+            <td class="tg-0lax">
+                <form onchange="updateQuantity({{ item.product.id }}, '{% url 'cart:cart_update' item.product.id %}')">
+                    {{ item.form.quantity }}
+                    {% csrf_token %}
+                </form>
+            </td>
+            <td class="tg-0lax unit-price">{{ item.product.price }}</td>
+            <td class="tg-0lax remove"><a href="{% url 'cart:cart_remove' item.pk %}">Remove</a></td>
+            <td class="tg-0lax price">{{ item.quantity|multiply:item.product.price }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td class="tg-0lax">Total</td>
+            <td class="tg-0lax" colspan="4"></td>
+            <td class="tg-0lax cart_price">{{ cart.0.get_total_price }}</td>
+        </tr>
+    </table>
+</section>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    function updateQuantity(product_id, url) {
+        form = document.querySelector('tr[key="'+product_id+'"] form')
+
+        fetch(url, {
+            method: 'post',
+            body: new FormData(form)
+        })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                document.querySelector('tr[key="'+product_id+'"] .price').innerHTML = (json.quantity * json.product.price).toFixed(2)
+                updateTotalPrice(json.total_price)
+                updateTotalQuantity(json.total_quantity)
+            })
+            .catch(err => {console.log(err)})
+    }
+
+    function updateTotalPrice(price) {
+        document.querySelectorAll('.cart_price').forEach(t => t.innerHTML = price)
+    }
+
+    function updateTotalQuantity(quantity) {
+        document.querySelectorAll('.cart_quantity').forEach(t => t.innerHTML = quantity)
+    }
+</script>
+{% endblock %}

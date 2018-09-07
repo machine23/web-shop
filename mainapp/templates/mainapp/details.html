@@ -19,7 +19,11 @@ Interion Shop
                     <h2 class="title mid-title">{{ product.name }}</h2>
                     <h3 class="tag tag-red">Hot Deal</h3>
                     <p class="price">$ <span class="price__val">{{ product.price }}</span></p>
-                    <a href="{% url 'cart:cart_add' product.pk %}" class="btn btn-buy">Add to cart</a>
+                    <form action="{% url 'cart:cart_add' product.pk %}" method="POST" id="cart_form" class="product-details__form">
+                        {% csrf_token %}
+                        {{ cart_form.as_p }}
+                        <button type="submit" class="btn btn-buy">Add to cart</button>
+                    </form>
                     <p class="details">{{ product.description|linebreaksbr }}</p>
                 </div>
             </div>
@@ -37,4 +41,27 @@ Interion Shop
             </div>
         </section> <!-- trending-product -->
         
+{% endblock %}
+
+{% block script %}
+<script>
+    const form = document.querySelector('#cart_form')
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault()
+        fetch("{% url 'cart:cart_add' product.pk %}", {
+            method: 'post',
+            body: new FormData(form)
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.status === 'ok') {
+                    document.querySelector('.cart_quantity').innerHTML = json.cart_quantity;
+                    document.querySelector('.cart_price').innerHTML = json.cart_price;
+                }
+            })
+            .catch(err => {console.log(err)})
+    })
+</script>
+    
 {% endblock %}
