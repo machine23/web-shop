@@ -36,7 +36,6 @@ def update_profile(request):
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
-            print(" ***************************** profile ********************************")
             user_form.save()
             profile_form.save()
             return redirect('account:update_profile')
