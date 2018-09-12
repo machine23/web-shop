@@ -38,7 +38,8 @@ def register(request):
 
 
 def send_verify_email(user):
-    verify_link = reverse('account:verify', args=[user.email, account_activation_token.make_token(user)])
+    token = account_activation_token.make_token(user)
+    verify_link = reverse('account:verify', args=[user.email, token])
 
     title = f'Подтверждение учетной записи {user.username}'
     message = f'Для подтверждения учетной записи {user.username} \
