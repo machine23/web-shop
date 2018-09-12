@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
     path('profile/', views.update_profile, name='update_profile'),
+    path('verify/<email>/<token>', views.verify, name='verify'),
 ]

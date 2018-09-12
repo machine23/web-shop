@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Account Activation{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero__content site-padding">
+        <h2 class="title big-title">Account Activation</h2>
+    </div>
+</div>
+<div class="form-card site-padding">
+    <div class="form-card__content">
+        <div>
+            {% if user.is_authenticated %}
+            <h2 class="title mid-title">Congratulations</h2>
+            <h3 class="tag tag-green">Account of {{ user.username }} is activated.</h3>
+            {% else %}
+            <h2 class="title mid-title">We are sorry</h2>
+            <h3 class="tag tag-red">Error during account activation.</h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

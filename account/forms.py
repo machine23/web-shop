@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 from .models import Profile
+from .validators import validate_email_unique
 
 
 class UserForm(forms.ModelForm):
@@ -12,6 +13,11 @@ class UserForm(forms.ModelForm):
 
 
 class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        validators=[validate_email_unique],
+        help_text='Required. Please type a valid email address.')
+
     class Meta:
         model = User
         fields = 'username', 'email'
