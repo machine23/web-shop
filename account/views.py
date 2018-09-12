@@ -24,6 +24,7 @@ def register(request):
             profile_form.save()
             if send_verify_email(user):
                 print('Activation email sent.')
+                return render(request, 'account/email_sent.html')
             else:
                 print('Error: activation email didn\'t send')
             return redirect('account:login')
