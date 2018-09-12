@@ -136,3 +136,7 @@ LOGIN_REDIRECT_URL = 'shop:index'
 LOGIN_URL = 'account:login'
 LOGOUT_URL = 'account:logout'
 LOGOUT_REDIRECT_URL = 'shop:index'
+
+AUTHENTICATION_BACKENDS = [
+    'account.backends.EmailBackend'
+]

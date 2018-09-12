@@ -19,11 +19,16 @@ Interion Shop
                     <h2 class="title mid-title">{{ product.name }}</h2>
                     <h3 class="tag tag-red">Hot Deal</h3>
                     <p class="price">$ <span class="price__val">{{ product.price }}</span></p>
+                    {% if user.is_authenticated %}
                     <form action="{% url 'cart:cart_add' product.pk %}" method="POST" id="cart_form" class="product-details__form">
                         {% csrf_token %}
                         {{ cart_form.as_p }}
                         <button type="submit" class="btn btn-buy">Add to cart</button>
                     </form>
+                    {% else %}
+                    <p class="details details_bigger details_centered">Please<br>
+                        <a href="{% url 'account:login' %}?next={{ request.path }}" class="btn">Login to buy</a></p>
+                    {% endif %}
                     <p class="details">{{ product.description|linebreaksbr }}</p>
                 </div>
             </div>

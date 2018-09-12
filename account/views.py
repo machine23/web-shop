@@ -1,14 +1,13 @@
-from django.contrib.auth import authenticate, login
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, UserForm, UserLoginForm, UserRegistrationForm
 
 
 def register(request):
     if request.method == 'POST':
-        user_form = UserCreationForm(request.POST)
+        user_form = UserRegistrationForm(request.POST)
         profile_form = ProfileForm(request.POST, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             cd = user_form.cleaned_data
@@ -17,12 +16,12 @@ def register(request):
             profile_form = ProfileForm(request.POST, instance=user.profile, files=request.FILES)
             profile_form.full_clean()
             profile_form.save()
-            user = authenticate(username=user.username, password=cd.get('password1'))
+            user = authenticate(username=user.email, password=cd.get('password1'))
             if user is not None:
                 login(request, user)
                 return redirect('shop:index')
     else:
-        user_form = UserCreationForm()
+        user_form = UserRegistrationForm()
         profile_form = ProfileForm()
     return render(request, 'account/register.html', {
         'user_form': user_form,
