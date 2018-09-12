@@ -141,6 +141,8 @@ AUTHENTICATION_BACKENDS = [
     'account.backends.EmailBackend'
 ]
 
+PASSWORD_RESET_TIMEOUT_DAYS = 1
+
 DOMAIN_NAME = 'http://localhost:8000'
 
 EMAIL_HOST = 'localhost'
