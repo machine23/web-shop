@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render, reverse
+from django.db import transaction
 
 from .forms import ProfileForm, UserForm, UserLoginForm, UserRegistrationForm
 from .tokens import account_activation_token
@@ -70,13 +71,14 @@ def verify(request, email, token):
 
 
 @login_required
+@transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
-            profile_form.save()
+            # profile_form.save()
             return redirect('account:update_profile')
     else:
         user_form = UserForm(instance=request.user)

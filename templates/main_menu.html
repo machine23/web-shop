@@ -24,7 +24,16 @@
         </li>
         {% if user.is_authenticated %}
         <li>
-            <a href="{% url 'account:update_profile' %}" class="menu__link">{{ user }}</a>
+            {% if user.profile.avatar %}
+                <a href="{% url 'account:update_profile' %}" class="menu__link_avatar">
+                    <img src="{{ user.profile.avatar.url }}" alt="" class="small-avatar">
+                </a>
+                {% else %}
+                <a href="{% url 'account:update_profile' %}" class="menu__link">
+                    {{ user }}
+                </a>
+                {% endif %}
+            </a>
         </li>
         <li>
             <a href="{% url 'account:logout' %}" class="menu__link">Logout</a>

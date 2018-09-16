@@ -5,8 +5,16 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
+    MALE = 'M'
+    FEMALЕ = 'W'
+
+    GENDER_CHOICES = (
+        (MALE, 'Male'),
+        (FEMALЕ, 'Female'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birth_date = models.DateField(null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
     avatar = models.ImageField(upload_to='users_avatars', blank=True, null=True)
 
     def __str__(self):
@@ -17,7 +25,6 @@ class Profile(models.Model):
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
-    # instance.profile.save()
 
 
 @receiver(post_save, sender=User)

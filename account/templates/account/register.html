@@ -12,7 +12,12 @@
     <div class="form-card__content">
         <form action="{% url 'account:register' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ user_form.as_p }}
+            <!-- {{ user_form.as_p }} -->
+            {% for field in user_form %}
+            <p>
+                <label>{{ field.label }}{{ field }}</label>
+            </p>
+            {% endfor %}
             {{ profile_form.as_p }}
             <input type="hidden" name="next" value="{{ next }}">
             <button type="submit" class="btn btn-submit">Create my account</button>

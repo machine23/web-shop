@@ -317,10 +317,11 @@ body {
 .menu__list {
   display: flex;
   list-style: none;
+  /* align-items: flex-end; */
 }
 
 .menu__link {
-  display: block;
+  display: inline-block;
   text-transform: uppercase;
   text-decoration: none;
   padding: 6px 13px;
@@ -328,6 +329,10 @@ body {
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 1px;
+}
+
+.menu__link_avatar {
+  align-self: flex-end;
 }
 
 .menu__link_active {
@@ -920,6 +925,11 @@ body {
   background-color: #ffffff;
 }
 
+.form-card select {
+  padding: 19px;
+  font-size: 24px;
+}
+
 .form-card label {
   font-size: 24px;
 }
@@ -928,6 +938,13 @@ body {
   display: block;
   width: 370px;
   height: 370px;
+  border-radius: 50%;
+}
+
+.small-avatar {
+  /* display: inline-block; */
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
 }
 
