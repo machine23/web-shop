@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'social_django',
+
     'account',
     'mainapp',
     'cart',
@@ -138,7 +141,8 @@ LOGOUT_URL = 'account:logout'
 LOGOUT_REDIRECT_URL = 'shop:index'
 
 AUTHENTICATION_BACKENDS = [
-    'account.backends.EmailBackend'
+    'social_core.backends.google.GoogleOAuth2',
+    'account.backends.EmailBackend',
 ]
 
 PASSWORD_RESET_TIMEOUT_DAYS = 1
@@ -153,3 +157,14 @@ EMAIL_USE_SSL = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/email-messages/'
+
+
+### Google+ Auth Settings ##################################################
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+with open(os.path.join(BASE_DIR, 'webshop/google.json')) as f:
+    google_settings = json.load(f)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = google_settings.get('client_id')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = google_settings.get('client_secret')
