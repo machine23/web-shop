@@ -15,7 +15,7 @@
             {{ form.as_p }}
             <input type="hidden" name="next" value="{{ next }}">
             <button type="submit" class="btn btn-submit">Log-in</button>
-            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn">Google+ sign in</a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ next }}" class="btn">Google+ sign in</a>
             <p class="details details_bigger details_centered">If you don't have an account <a href="{% url 'account:register' %}" class="btn btn-ghost">register here</a></p>
         </form>
     </div>
