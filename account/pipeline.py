@@ -1,6 +1,11 @@
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 from django.core.files.base import ContentFile
+from django.conf import settings
+
+if settings.DEBUG:
+    import ssl
+    ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def save_user_profile(backend, user, response, *args, **kwargs):

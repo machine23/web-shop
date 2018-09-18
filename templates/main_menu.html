@@ -22,22 +22,37 @@
                 Contact
             </a>
         </li>
+
+
+
         {% if user.is_authenticated %}
         <li>
-            {% if user.profile.avatar %}
-                <a href="{% url 'account:update_profile' %}" class="menu__link_avatar">
+            <div class="dropdown">
+                {% if user.profile.avatar %}
+                <a href="{% url 'account:update_profile' %}" class="menu__link_avatar dropbtn">
                     <img src="{{ user.profile.avatar.url }}" alt="" class="small-avatar">
                 </a>
                 {% else %}
-                <a href="{% url 'account:update_profile' %}" class="menu__link">
+                <a href="{% url 'account:update_profile' %}" class="menu__link dropbtn">
                     {{ user }}
                 </a>
                 {% endif %}
+                <div class="dropdown-content">
+                    <a href="{% url 'account:update_profile' %}">Profile</a>
+                    <a href="#">Orders</a>
+                </div>
+            </div>
             </a>
         </li>
+
+
+
         <li>
             <a href="{% url 'account:logout' %}" class="menu__link">Logout</a>
         </li>
+
+
+
         {% else %}
         <li>
             <a href="{% url 'account:login' %}" class="menu__link">Login</a>
