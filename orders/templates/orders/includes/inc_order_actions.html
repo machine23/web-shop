@@ -1,0 +1,10 @@
+{% if object.status == 'FM' %}
+<a href="{% url 'orders:order_forming_complete' object.pk %}" class="btn btn-success btn-block">
+    buy
+</a>
+<a href="{% url 'orders:order_delete' object.pk %}" class="btn btn-danger btn-block">delete</a>
+{% endif %}
+<a href="{% url 'orders:orders_list' %}" class="btn btn-outline-info btn-block">
+    order list
+</a>
+<a href="{% url 'shop:index' %}" class="btn btn-outline-primary btn-block">Home</a>

@@ -1,0 +1,21 @@
+{% extends "orders/base.html" %}
+
+{% block content %}
+    {% include 'orders/includes/inc_order_summary.html' %}
+    <table class="table table-hover">
+        {% for item in object.orderitems.select_related %}
+            <tr>
+                <td>
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.description }}" class="img-thumbnail" style="width:100px;">
+                </td>
+                <td class="align-middle">{{ item.product.category.name }}</td>
+                <td class="align-middle">{{ item.product.name }}</td>
+                <td class="align-middle">{{ item.product.price }}&nbsp$</td>
+                <td class="align-middle">{{ item.quantity }} tk.</td>
+                <td class="align-middle">{{ item.get_product_price }}&nbsp$</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% include 'orders/includes/inc_order_actions.html' %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<div class="card bg-light">
+    {% if object %}
+        <div class="card-header h2">Order {{ object.pk }} by {{ object.created|date:"Y-m-d H:i:s" }}</div>
+        <div class="card-body">
+            <div>customer: {{ user.last_name }} {{ user.first_name }} </div>
+            <div>updated: {{ object.updated|date:"Y-m-d H:i:s" }}</div>
+            <div>status: {{ object.get_status_display }}</div>
+            <div>
+                total quantity: <span class="order_total_quantity">{{ object.get_total_quantity }}</span>
+            </div>
+            <div class="h3">
+                total price: <span class="order_total_cost">{{ object.get_total_cost }}</span>$
+            </div>
+        </div>
+    {% else %}
+        <div class="card-header h2">New order</div>
+        <div class="card-body">
+            <div>customer: {{ user.last_name }} {{ user.first_name }} </div>
+            {% if basket.0 %}
+                <div>
+                    total quantity: <span class="order_total_quantity">{{ basket.0.get_total_quantity }}</span>
+                </div>
+                <div class="h3">
+                    total price: <span class="order_total_cost">{{ basket.0.get_total_cost }}</span>$
+                </div>
+
+        </div>
+        {% endif %}
+    {% endif %}
+
+</div>
