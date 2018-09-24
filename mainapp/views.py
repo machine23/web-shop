@@ -1,4 +1,8 @@
-from django.shortcuts import get_object_or_404, render
+from django.forms.models import model_to_dict
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
+from django.views import View
 
 from cart.forms import CartAddForm
 
@@ -18,9 +22,8 @@ def index(request):
 
 def details(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    # category =
     related = product.category.products.exclude(pk=pk)
-    cart_form = CartAddForm()
+    cart_form = CartAddForm(max_quantity=product.stock)
 
     context = {
         'product': product,
@@ -49,3 +52,9 @@ def products(request, category_pk=None):
 
 def contacts(request):
     return render(request, 'mainapp/contacts.html')
+
+
+class ProductAPIView(View):
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, pk=request.GET.get('id'))
+        return JsonResponse(model_to_dict(product, exclude=['image']))

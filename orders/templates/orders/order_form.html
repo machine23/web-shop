@@ -1,4 +1,5 @@
 {% extends "orders/base.html" %}
+{% load static %}
 {% block content %}
 {% include 'orders/includes/inc_order_summary.html' %}
 <div class="order_form">
@@ -38,4 +39,10 @@
         {% include 'orders/includes/inc_order_actions.html' %}
     </form>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/orders_script.js' %}">
+    
+</script>
 {% endblock %}

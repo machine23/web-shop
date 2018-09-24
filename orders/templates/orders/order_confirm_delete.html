@@ -1,15 +1,19 @@
 {% extends 'orders/base.html' %}
 
 {% block content %}
-    <div class="category_delete">
+    <div>
         <div class="h1">Are you sure?</div>
-        {% include 'orders/includes/inc_order_summary.html' %}
         <form method="post">
+            <div class="form-group">
+                {% include 'orders/includes/inc_order_summary.html' %}
+
+            </div>
             {% csrf_token %}
-            <input class="btn btn-danger" type="submit" value="delete">
+            <div class="form-group">
+
+                <input class="btn btn-danger" type="submit" value="delete">
+                <a href="{% url 'orders:orders_list' %}" class="btn btn-success">cancel</a>
+            </div>
         </form>
-        <button class="btn btn-success">
-            <a href="{% url 'orders:orders_list' %}">cancel</a>
-        </button>
     </div>
 {% endblock %}

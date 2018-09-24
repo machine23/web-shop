@@ -17,6 +17,8 @@ class OrderForm(forms.ModelForm):
 
 
 class OrderItemForm(forms.ModelForm):
+    price = forms.CharField(required=False)
+
     class Meta:
         model = OrderItem
         fields = '__all__'
@@ -25,6 +27,5 @@ class OrderItemForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
-
-
-OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=1)
+        self.fields['price'].widget.attrs['class'] = 'form-control-plaintext'
+        self.fields['price'].widget.attrs['readonly'] = True
