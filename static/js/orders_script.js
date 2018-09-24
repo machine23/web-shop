@@ -6,8 +6,9 @@ window.onload = function () {
     const order_total_cost_view = document.querySelector('.order_total_cost')
 
     let total_forms = parseInt(document.querySelector('input[name="orderitems-TOTAL_FORMS"]').value)
-    let order_total_quantity = parseInt(document.querySelector('.order_total_quantity').innerHTML || 0)
-    let order_total_cost = parseFloat(document.querySelector('.order_total_cost').innerHTML || 0)
+
+    let order_total_quantity = 0
+    let order_total_cost = 0
     
     orderSummaryUpdate()
 
@@ -57,7 +58,11 @@ window.onload = function () {
 
         order_total_quantity = quantity_arr.reduce((a,b) => a + b, 0)
         order_total_cost = quantity_arr.reduce((a,b,i) => a + (b * price_arr[i]), 0)
-        order_total_quantity_view.innerHTML = order_total_quantity
-        order_total_cost_view.innerHTML = order_total_cost.toFixed(2)
+        if (order_total_quantity_view) {
+            order_total_quantity_view.innerHTML = order_total_quantity
+        }
+        if (order_total_cost_view) {
+            order_total_cost_view.innerHTML = order_total_cost.toFixed(2)
+        }
     }
 }
