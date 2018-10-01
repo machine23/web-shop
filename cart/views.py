@@ -51,6 +51,7 @@ def cart_add(request, product_id):
 
     return JsonResponse(result)
 
+
 @require_POST
 @login_required
 def cart_update_quantity(request, product_id):
@@ -65,7 +66,7 @@ def cart_update_quantity(request, product_id):
 
         result = {
             'status': 'updated',
-            'product': model_to_dict(product, exclude=['image',]),
+            'product': model_to_dict(product, exclude=['image', ]),
             'quantity': cart_item.quantity,
             'total_quantity': cart_item.get_total_quantity(),
             'total_price': cart_item.get_total_price(),
@@ -74,12 +75,11 @@ def cart_update_quantity(request, product_id):
         result = {
             'status': 'error',
         }
-    
+
     return JsonResponse(result)
 
 
-
-
+@login_required
 def cart_remove(request, product_id):
     cart_item = get_object_or_404(Cart, pk=product_id)
     cart_item.delete()

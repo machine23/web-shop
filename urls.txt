@@ -1,0 +1,11 @@
+http://192.168.0.31/
+http://192.168.0.31/products/
+http://192.168.0.31/products/1
+http://192.168.0.31/details/1
+http://192.168.0.31/cart/
+http://192.168.0.31/order/
+http://192.168.0.31/order/update/1/
+http://192.168.0.31/order/update/3/
+http://192.168.0.31/order/read/3/
+http://192.168.0.31/contacts/
+http://192.168.0.31/account/profile/

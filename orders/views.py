@@ -4,6 +4,8 @@ from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 from django.forms import inlineformset_factory
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 
 from cart.models import Cart
@@ -18,11 +20,19 @@ class OrderList(ListView):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class OrderItemsCreate(CreateView):
     model = Order
     fields = []
     success_url = reverse_lazy('orders:orders_list')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -70,6 +80,10 @@ class OrderItemsUpdate(UpdateView):
     fields = []
     success_url = reverse_lazy('orders:orders_list')
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=1)
@@ -105,11 +119,20 @@ class OrderDelete(DeleteView):
     model = Order
     success_url = reverse_lazy('orders:orders_list')
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class OrderRead(DetailView):
     model = Order
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
+
+@login_required
 def order_forming_complete(request, pk):
     order = get_object_or_404(Order, pk=pk)
     order.status = Order.SENT_TO_PROCEED
