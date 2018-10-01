@@ -41,7 +41,7 @@ class OrderItemsCreate(CreateView):
         if self.request.POST:
             formset = OrderFormSet(self.request.POST)
         else:
-            cart_items = Cart.objects.filter(user=self.request.user)
+            cart_items = Cart.objects.filter(user=self.request.user).select_related()
             initial = []
             for item in cart_items:
                 temp = {}
@@ -91,7 +91,8 @@ class OrderItemsUpdate(UpdateView):
         if self.request.method == 'POST':
             context['orderitems'] = OrderFormSet(self.request.POST, instance=self.object)
         else:
-            formset = OrderFormSet(instance=self.object)
+            queryset = self.object.orderitems.select_related()
+            formset = OrderFormSet(instance=self.object, queryset=queryset)
             for form in formset.forms:
                 if form.instance.pk:
                     form.initial['price'] = form.instance.product.price

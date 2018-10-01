@@ -25,11 +25,11 @@ class Cart(models.Model):
         return 'Cart {} : {} ({})'.format(self.user.username, self.product, self.quantity)
 
     def get_total_quantity(self):
-        items = Cart.objects.filter(user=self.user)
+        items = Cart.objects.filter(user=self.user).select_related()
         return sum(i.quantity for i in items)
 
     def get_total_price(self):
-        items = Cart.objects.filter(user=self.user)
+        items = Cart.objects.filter(user=self.user).select_related()
         return sum(i.quantity * i.product.price for i in items)
 
     def delete(self):
